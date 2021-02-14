@@ -1648,7 +1648,7 @@ usercreate(Fid *fid, char *elem, int omode, long perm, char **ep)
 			return -1;
 		}
 		/* race */
-		if(mkdir(npath, perm&0777) < 0){
+		if(mkdir(npath, perm&0777|0400) < 0){
 			*ep = strerror(errno);
 			free(npath);
 			return -1;
